@@ -44,7 +44,7 @@
         },
         "laravel": {
             "providers": [
-                "rodriguezework\\VaporUi-11\\VaporUiServiceProvider"
+                "laravel\\VaporUi\\VaporUiServiceProvider"
             ]
         }
     },
