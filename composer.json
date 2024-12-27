@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Laravel\\VaporUi\\": "src/"
+            "rodriguezework\\VaporUi\\": "src/"
         }
     },
     "autoload-dev": {
