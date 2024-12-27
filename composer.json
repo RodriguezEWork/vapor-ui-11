@@ -1,11 +1,11 @@
 {
-    "name": "laravel/vapor-ui",
+    "name": "rodriguezework/vapor-ui-11",
     "description": "The Laravel Vapor UI.",
     "keywords": ["laravel", "vapor"],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel/vapor-ui/issues",
-        "source": "https://github.com/laravel/vapor-ui"
+        "issues": "https://github.com/rodriguezework/vapor-ui-11/issues",
+        "source": "https://github.com/rodriguezework/vapor-ui-11"
     },
     "authors": [
         {
@@ -44,7 +44,7 @@
         },
         "laravel": {
             "providers": [
-                "Laravel\\VaporUi\\VaporUiServiceProvider"
+                "rodriguezework\\VaporUi-11\\VaporUiServiceProvider"
             ]
         }
     },
