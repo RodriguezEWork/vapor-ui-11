@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\VaporUi\Concerns;
+namespace rodriguezework\VaporUi\Concerns;
 
 use Illuminate\Support\Facades\Config;
 

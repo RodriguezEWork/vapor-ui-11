@@ -1,8 +1,8 @@
 <?php
 
-use Laravel\VaporUi\Http\Middleware\EnsureEnvironmentVariables;
-use Laravel\VaporUi\Http\Middleware\EnsureUpToDateAssets;
-use Laravel\VaporUi\Http\Middleware\EnsureUserIsAuthorized;
+use rodriguezework\VaporUi\Http\Middleware\EnsureEnvironmentVariables;
+use rodriguezework\VaporUi\Http\Middleware\EnsureUpToDateAssets;
+use rodriguezework\VaporUi\Http\Middleware\EnsureUserIsAuthorized;
 
 return [
 

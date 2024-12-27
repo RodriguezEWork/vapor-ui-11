@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\VaporUi\Support;
+namespace rodriguezework\VaporUi\Support;
 
 use Illuminate\Support\Arr;
 use Symfony\Component\Yaml\Parser;

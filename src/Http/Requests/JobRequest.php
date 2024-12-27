@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\VaporUi\Http\Requests;
+namespace rodriguezework\VaporUi\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

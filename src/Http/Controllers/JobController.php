@@ -1,13 +1,13 @@
 <?php
 
-namespace Laravel\VaporUi\Http\Controllers;
+namespace rodriguezework\VaporUi\Http\Controllers;
 
-use Laravel\VaporUi\Http\Requests\JobRequest;
-use Laravel\VaporUi\Jobs\ForgetFailedJob;
-use Laravel\VaporUi\Jobs\RetryFailedJob;
-use Laravel\VaporUi\Repositories\JobsRepository;
-use Laravel\VaporUi\ValueObjects\Job;
-use Laravel\VaporUi\ValueObjects\SearchResult;
+use rodriguezework\VaporUi\Http\Requests\JobRequest;
+use rodriguezework\VaporUi\Jobs\ForgetFailedJob;
+use rodriguezework\VaporUi\Jobs\RetryFailedJob;
+use rodriguezework\VaporUi\Repositories\JobsRepository;
+use rodriguezework\VaporUi\ValueObjects\Job;
+use rodriguezework\VaporUi\ValueObjects\SearchResult;
 
 class JobController
 {

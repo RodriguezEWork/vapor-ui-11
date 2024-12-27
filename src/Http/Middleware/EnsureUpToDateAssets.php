@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\VaporUi\Http\Middleware;
+namespace rodriguezework\VaporUi\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

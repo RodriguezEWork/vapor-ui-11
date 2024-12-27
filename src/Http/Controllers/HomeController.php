@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\VaporUi\Http\Controllers;
+namespace rodriguezework\VaporUi\Http\Controllers;
 
 use Illuminate\View\View;
-use Laravel\VaporUi\Support\Cloud;
+use rodriguezework\VaporUi\Support\Cloud;
 
 class HomeController
 {

@@ -4,7 +4,7 @@ namespace Tests;
 
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Illuminate\Support\Facades\Gate;
-use Laravel\VaporUi\VaporUiServiceProvider;
+use rodriguezework\VaporUi\VaporUiServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase

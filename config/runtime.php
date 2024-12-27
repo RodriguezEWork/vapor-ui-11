@@ -1,6 +1,6 @@
 <?php
 
-use Laravel\VaporUi\Support\Cloud;
+use rodriguezework\VaporUi\Support\Cloud;
 
 return [
     // Aws Credentials

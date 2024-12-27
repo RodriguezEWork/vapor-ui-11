@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\VaporUi\Console;
+namespace rodriguezework\VaporUi\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Attribute\AsCommand;

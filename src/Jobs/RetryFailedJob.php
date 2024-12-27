@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\VaporUi\Jobs;
+namespace rodriguezework\VaporUi\Jobs;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\Queue\Factory;

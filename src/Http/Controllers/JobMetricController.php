@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\VaporUi\Http\Controllers;
+namespace rodriguezework\VaporUi\Http\Controllers;
 
-use Laravel\VaporUi\Http\Requests\JobMetricRequest;
-use Laravel\VaporUi\Repositories\JobsMetricsRepository;
+use rodriguezework\VaporUi\Http\Requests\JobMetricRequest;
+use rodriguezework\VaporUi\Repositories\JobsMetricsRepository;
 
 class JobMetricController
 {

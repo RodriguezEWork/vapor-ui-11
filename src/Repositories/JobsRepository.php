@@ -1,12 +1,12 @@
 <?php
 
-namespace Laravel\VaporUi\Repositories;
+namespace rodriguezework\VaporUi\Repositories;
 
 use Illuminate\Queue\Failed\FailedJobProviderInterface;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Laravel\VaporUi\ValueObjects\Job;
-use Laravel\VaporUi\ValueObjects\SearchResult;
+use rodriguezework\VaporUi\ValueObjects\Job;
+use rodriguezework\VaporUi\ValueObjects\SearchResult;
 
 class JobsRepository
 {

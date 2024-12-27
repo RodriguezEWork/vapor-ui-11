@@ -1,12 +1,12 @@
 <?php
 
-namespace Laravel\VaporUi\Repositories;
+namespace rodriguezework\VaporUi\Repositories;
 
 use Aws\CloudWatchLogs\CloudWatchLogsClient;
 use Aws\CloudWatchLogs\Exception\CloudWatchLogsException;
 use Illuminate\Support\Str;
-use Laravel\VaporUi\ValueObjects\Log;
-use Laravel\VaporUi\ValueObjects\SearchResult;
+use rodriguezework\VaporUi\ValueObjects\Log;
+use rodriguezework\VaporUi\ValueObjects\SearchResult;
 
 class LogsRepository
 {

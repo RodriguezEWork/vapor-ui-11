@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\VaporUi\Http\Controllers;
+namespace rodriguezework\VaporUi\Http\Controllers;
 
-use Laravel\VaporUi\Http\Requests\LogRequest;
-use Laravel\VaporUi\Repositories\LogsRepository;
-use Laravel\VaporUi\ValueObjects\Log;
-use Laravel\VaporUi\ValueObjects\SearchResult;
+use rodriguezework\VaporUi\Http\Requests\LogRequest;
+use rodriguezework\VaporUi\Repositories\LogsRepository;
+use rodriguezework\VaporUi\ValueObjects\Log;
+use rodriguezework\VaporUi\ValueObjects\SearchResult;
 
 class LogController
 {

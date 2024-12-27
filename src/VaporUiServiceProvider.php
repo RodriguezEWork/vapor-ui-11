@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\VaporUi;
+namespace rodriguezework\VaporUi;
 
 use Aws\CloudWatch\CloudWatchClient;
 use Aws\CloudWatchLogs\CloudWatchLogsClient;
@@ -8,7 +8,7 @@ use Aws\Sqs\SqsClient;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Laravel\VaporUi\Concerns\ConfiguresVaporUi;
+use rodriguezework\VaporUi\Concerns\ConfiguresVaporUi;
 
 class VaporUiServiceProvider extends ServiceProvider
 {

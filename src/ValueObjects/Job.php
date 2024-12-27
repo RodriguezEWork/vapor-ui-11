@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\VaporUi\ValueObjects;
+namespace rodriguezework\VaporUi\ValueObjects;
 
 use Illuminate\Queue\ManuallyFailedException;
 use Illuminate\Support\Carbon;

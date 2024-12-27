@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\VaporUi\Http\Controllers\HomeController;
-use Laravel\VaporUi\Http\Controllers\JobController;
-use Laravel\VaporUi\Http\Controllers\JobMetricController;
-use Laravel\VaporUi\Http\Controllers\LogController;
+use rodriguezework\VaporUi\Http\Controllers\HomeController;
+use rodriguezework\VaporUi\Http\Controllers\JobController;
+use rodriguezework\VaporUi\Http\Controllers\JobMetricController;
+use rodriguezework\VaporUi\Http\Controllers\LogController;
 
 Route::middleware('vapor-ui')
     ->group(function () {
