@@ -32,6 +32,10 @@ class EnsureEnvironmentVariables
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        if(env('APP_ENV') == 'local') {
+            return $next($request);
+        }
+
         $message = 'Unable to detect [vapor-ui.%s]. Please deploy your project, and visit this URI on a Vapor powered environment.';
         $config = config('vapor-ui');
 
