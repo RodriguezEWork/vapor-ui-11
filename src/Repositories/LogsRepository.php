@@ -116,7 +116,6 @@ class LogsRepository
             })->values();
 
             var_dump($entries);
-            die();
 
         return new SearchResult($entries, $response['nextToken'] ?? null);
     }
