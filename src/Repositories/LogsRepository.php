@@ -4,6 +4,7 @@ namespace rodriguezework\VaporUi\Repositories;
 
 use Aws\CloudWatchLogs\CloudWatchLogsClient;
 use Aws\CloudWatchLogs\Exception\CloudWatchLogsException;
+use Illuminate\Support\Facades\Log as FacadesLog;
 use Illuminate\Support\Str;
 use rodriguezework\VaporUi\ValueObjects\Log;
 use rodriguezework\VaporUi\ValueObjects\SearchResult;
@@ -115,8 +116,7 @@ class LogsRepository
                 return new Log($event, $group, $filters);
             })->values();
 
-            var_dump($entries);
-            die();
+            FacadesLog::info('Mensaje de log', ['entries' => $entries]);
 
         return new SearchResult($entries, $response['nextToken'] ?? null);
     }
