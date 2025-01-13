@@ -106,41 +106,17 @@ class LogsRepository
         $entries = collect($response['events'])
             ->filter(function ($event) use ($filters) {
                 return empty($filters['type']) || $filters['type'] === 'timeout' || @json_decode($event['message']);
-            })
-            ->map(function ($event, $key) use ($group, $filters, &$response) {
-                if (array_key_exists('message', $event)) {
-                    $message = $event['message'];
-        
-                    // Verificar si el mensaje contiene "[stacktrace]"
-                    if (str_contains($message, '[stacktrace]')) {
-                        // Quitar "[stacktrace]" del mensaje
-                        $message = str_replace('[stacktrace]', '', $message);
-        
-                        // Buscar mensajes consecutivos con números seguidos de #
-                        $combinedStacktrace = '';
-                        for ($i = $key + 1; $i < count($response['events']); $i++) {
-                            $nextEvent = $response['events'][$i];
-        
-                            // Verificar si el mensaje empieza con un número seguido de #
-                            if (preg_match('/^\d+#/', $nextEvent['message'])) {
-                                $combinedStacktrace .= $nextEvent['message'] . "\n";
-                            } else {
-                                break; // Terminar el bucle si no sigue el patrón
-                            }
-                        }
-        
-                        // Agregar los mensajes concatenados al final del mensaje original
-                        $message .= "\n" . $combinedStacktrace;
-                    }
-        
-                    // Actualizar el mensaje procesado
+            })->map(function ($event) use ($group, $filters) {
+                if (array_key_exists('message', $event)
+                    && ($message = json_decode($event['message'], true))) {
                     $event['message'] = $message;
                 }
-        
+
                 return new Log($event, $group, $filters);
-            })
-            ->values();
-    
+            })->values();
+
+            var_dump($entries);
+            die();
 
         return new SearchResult($entries, $response['nextToken'] ?? null);
     }
