@@ -115,6 +115,8 @@ class LogsRepository
                 return new Log($event, $group, $filters);
             })->values();
 
+            return $entries;
+
         return new SearchResult($entries, $response['nextToken'] ?? null);
     }
 
