@@ -108,14 +108,11 @@ class LogsRepository
                 return empty($filters['type']) || $filters['type'] === 'timeout' || @json_decode($event['message']);
             })->map(function ($event, $key) use ($response, $group, $filters) {
                 
-                var_dump('al map');
+                var_dump($event);
 
                 if (array_key_exists('message', $event)
                     && ($message = json_decode($event['message'], true))) {
                         
-                        var_dump('aca 2');
-                        die();
-
                         if(Str::contains($message['message'], '[stacktrace]')) {
                             $track = $key + 1;
                             $listTrack = collect($response['events'])->slice($track);
