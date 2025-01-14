@@ -112,6 +112,8 @@ class LogsRepository
                     && ($message = json_decode($event['message'], true))) {
                         
                         if(Str::contains($message['message'], '[stacktrace]')) {
+                            var_dump($message['message']);
+                            die();
                             $track = $key + 1;
                             $listTrack = collect($response['events'])->slice($track);
                             $listTrack->each(function ($trackEvent) use ($message) {
@@ -125,6 +127,8 @@ class LogsRepository
                                 }
                             });
                         } else if(preg_match('/#\d+/', $message)) {
+                            var_dump('here');
+                            die();
                             return $event;
                         } 
                     $event['message'] = $message;
