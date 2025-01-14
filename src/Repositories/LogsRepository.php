@@ -106,38 +106,32 @@ class LogsRepository
         $entries = collect($response['events'])
             ->filter(function ($event) use ($filters) {
                 return empty($filters['type']) || $filters['type'] === 'timeout' || @json_decode($event['message']);
-            })->map(function ($event, $index) use ($group, $filters, &$entries) {
-                static $buffer = [];
-                static $currentIndex = null;
-        
-                if (array_key_exists('message', $event) && ($message = json_decode($event['message'], true))) {
+            })->map(function ($event, $key) use ($response, $group, $filters) {
+                
+                if (array_key_exists('message', $event)
+                    && ($message = json_decode($event['message'], true))) {
+                        
+                        if(Str::contains($message['message'], '[stacktrace]')) {
+                            $track = $key + 1;
+                            $listTrack = collect($response['events'])->slice($track);
+                            $listTrack->each(function ($trackEvent) use ($message) {
+                                if (array_key_exists('message', $trackEvent)
+                                    && ($newMessage = json_decode($trackEvent['message'], true))) {
+                                        if(preg_match('/^\d+#/', $newMessage)) {
+                                            $message = $message + "\n" + $newMessage['message'];
+                                        } else {
+                                            return false;
+                                        }
+                                }
+                            });
+                        } else if(preg_match('/^\d+#/', $message)) {
+                            return $event;
+                        } 
                     $event['message'] = $message;
                 }
-        
-                $message = $event['message'];
-        
-                // Check for "[tracktrace]" in the message
-                if (is_string($message) && str_contains($message, '[tracktrace]')) {
-                    $currentIndex = $index; // Save the index of the entry before the tracktrace
-                    $buffer = []; // Initialize buffer for collecting messages
-                    return null; // Skip the current entry
-                }
-        
-                // If current index is set and the message contains a "#"
-                if ($currentIndex !== null && is_string($message) && preg_match('/\d+#/', $message)) {
-                    $buffer[] = $message; // Add message to buffer
-                    return null; // Skip the current entry
-                }
-        
-                // If no "#" is found, finalize the aggregation
-                if ($currentIndex !== null && (!is_string($message) || !preg_match('/\d+#/', $message))) {
-                    $entries[$currentIndex]['message'] .= '\n' . implode('\n', $buffer); // Append buffered messages to the original index
-                    $buffer = []; // Clear the buffer
-                    $currentIndex = null; // Reset the current index
-                }
-        
+
                 return new Log($event, $group, $filters);
-            })->filter()->values();
+            })->values();
 
         return new SearchResult($entries, $response['nextToken'] ?? null);
     }
