@@ -117,7 +117,7 @@ class LogsRepository
                             $listTrack->each(function ($trackEvent) use ($message) {
                                 if (array_key_exists('message', $trackEvent)
                                     && ($newMessage = json_decode($trackEvent['message'], true))) {
-                                        if(preg_match('/^\d+#/', $newMessage)) {
+                                        if(preg_match('/#\d+/', $newMessage)) {
                                             $message = $message + "\n" + $newMessage['message'];
                                         } else {
                                             return false;
