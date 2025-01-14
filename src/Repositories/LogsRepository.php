@@ -108,12 +108,15 @@ class LogsRepository
                 return empty($filters['type']) || $filters['type'] === 'timeout' || @json_decode($event['message']);
             })->map(function ($event, $key) use ($response, $group, $filters) {
                 
+                var_dump('al map');
+
                 if (array_key_exists('message', $event)
                     && ($message = json_decode($event['message'], true))) {
                         
+                        var_dump('aca 2');
+                        die();
+
                         if(Str::contains($message['message'], '[stacktrace]')) {
-                            var_dump($message['message']);
-                            die();
                             $track = $key + 1;
                             $listTrack = collect($response['events'])->slice($track);
                             $listTrack->each(function ($trackEvent) use ($message) {
@@ -127,8 +130,6 @@ class LogsRepository
                                 }
                             });
                         } else if(preg_match('/#\d+/', $message)) {
-                            var_dump('here');
-                            die();
                             return $event;
                         } 
                     $event['message'] = $message;
