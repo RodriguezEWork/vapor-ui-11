@@ -124,7 +124,7 @@ class LogsRepository
                                         }
                                 }
                             });
-                        } else if(preg_match('/^\d+#/', $message)) {
+                        } else if(preg_match('/#\d+/', $message)) {
                             return $event;
                         } 
                     $event['message'] = $message;
