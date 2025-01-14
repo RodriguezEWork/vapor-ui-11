@@ -106,14 +106,38 @@ class LogsRepository
         $entries = collect($response['events'])
             ->filter(function ($event) use ($filters) {
                 return empty($filters['type']) || $filters['type'] === 'timeout' || @json_decode($event['message']);
-            })->map(function ($event) use ($group, $filters) {
-                if (array_key_exists('message', $event)
-                    && ($message = json_decode($event['message'], true))) {
+            })->map(function ($event, $index) use ($group, $filters, &$entries) {
+                static $buffer = [];
+                static $currentIndex = null;
+        
+                if (array_key_exists('message', $event) && ($message = json_decode($event['message'], true))) {
                     $event['message'] = $message;
                 }
-
+        
+                $message = $event['message'];
+        
+                // Check for "[tracktrace]" in the message
+                if (is_string($message) && str_contains($message, '[tracktrace]')) {
+                    $currentIndex = $index; // Save the index of the entry before the tracktrace
+                    $buffer = []; // Initialize buffer for collecting messages
+                    return null; // Skip the current entry
+                }
+        
+                // If current index is set and the message contains a "#"
+                if ($currentIndex !== null && is_string($message) && preg_match('/\d+#/', $message)) {
+                    $buffer[] = $message; // Add message to buffer
+                    return null; // Skip the current entry
+                }
+        
+                // If no "#" is found, finalize the aggregation
+                if ($currentIndex !== null && (!is_string($message) || !preg_match('/\d+#/', $message))) {
+                    $entries[$currentIndex]['message'] .= '\n' . implode('\n', $buffer); // Append buffered messages to the original index
+                    $buffer = []; // Clear the buffer
+                    $currentIndex = null; // Reset the current index
+                }
+        
                 return new Log($event, $group, $filters);
-            })->values();
+            })->filter()->values();
 
         return new SearchResult($entries, $response['nextToken'] ?? null);
     }
