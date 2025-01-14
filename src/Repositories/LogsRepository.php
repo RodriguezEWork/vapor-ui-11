@@ -103,8 +103,6 @@ class LogsRepository
             ];
         }
 
-        die();
-
         $entries = collect($response['events'])
             ->filter(function ($event) use ($filters) {
                 return empty($filters['type']) || $filters['type'] === 'timeout' || @json_decode($event['message']);
