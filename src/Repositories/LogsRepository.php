@@ -115,13 +115,10 @@ class LogsRepository
                             $listTrack = collect($response['events'])->slice($track);
                             $listTrack->each(function ($trackEvent) use ($message) {
                                 if (array_key_exists('message', $trackEvent)) {
-                                        var_dump('al segundo each');
                                         $newMessage = $trackEvent['message'];
                                         if(preg_match('/#\d+/', $newMessage)) {
-                                            var_dump('al preg match');
                                             $message = $message . "\n" . $newMessage;
                                         } else {
-                                            var_dump('al else');
                                             return false;
                                         }
                                 }
