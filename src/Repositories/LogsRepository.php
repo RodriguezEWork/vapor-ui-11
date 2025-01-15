@@ -110,16 +110,15 @@ class LogsRepository
                 
                 if (array_key_exists('message', $event)) {
                         $message = $event['message'];
-                        var_dump('dime que siiiii');
 
-                        if(Str::contains($message['message'], '[stacktrace]')) {
+                        if(Str::contains($message, '[stacktrace]')) {
                             $track = $key + 1;
                             $listTrack = collect($response['events'])->slice($track);
                             $listTrack->each(function ($trackEvent) use ($message) {
-                                if (array_key_exists('message', $trackEvent)
-                                    && ($newMessage = json_decode($trackEvent['message'], true))) {
+                                if (array_key_exists('message', $trackEvent)) {
+                                        $newMessage = $trackEvent['message'];
                                         if(preg_match('/#\d+/', $newMessage)) {
-                                            $message = $message + "\n" + $newMessage['message'];
+                                            $message = $message + "\n" + $newMessage;
                                         } else {
                                             return false;
                                         }
