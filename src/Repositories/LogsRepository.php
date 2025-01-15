@@ -118,6 +118,7 @@ class LogsRepository
                                         $newMessage = $trackEvent['message'];
                                         if(preg_match('/#\d+/', $newMessage)) {
                                             $message = $message . "\n" . $newMessage;
+                                            var_dump($message);
                                         }
                                 }
                             });
