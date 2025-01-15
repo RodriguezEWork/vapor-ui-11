@@ -115,7 +115,7 @@ class LogsRepository
                             $listTrack = collect($response['events'])->slice($track);
                             $listTrack->each(function ($trackEvent) use (&$message) {
                                 if (array_key_exists('message', $trackEvent)) {
-                                        $newMessage = $trackEvent['message'];
+                                        $newMessage = trim($trackEvent['message']);
                                         if(preg_match('/#\d+/', $newMessage)) {
                                             $message = $message . "\n" . $newMessage;
                                         }
