@@ -125,7 +125,6 @@ class LogsRepository
                                 }
                             });
                         } 
-                        var_dump($message);
                     $event['message'] = $message;
                 }
 
