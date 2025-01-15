@@ -117,15 +117,15 @@ class LogsRepository
                                 if (array_key_exists('message', $trackEvent)) {
                                         $newMessage = $trackEvent['message'];
                                         if(preg_match('/#\d+/', $newMessage)) {
+                                            var_dump($newMessage);
                                             $message = $message . "\n" . $newMessage;
                                         } else {
                                             return false;
                                         }
                                 }
                             });
-                        } else if(preg_match('/#\d+/', $message)) {
-                            return $event;
                         } 
+                        var_dump($message);
                     $event['message'] = $message;
                 }
 
