@@ -117,19 +117,18 @@ class LogsRepository
                                 if (array_key_exists('message', $trackEvent)) {
                                         $newMessage = $trackEvent['message'];
                                         if(preg_match('/#\d+/', $newMessage)) {
-                                            var_dump($newMessage);
                                             $message = $message . "\n" . $newMessage;
-                                        } else {
-                                            return false;
                                         }
                                 }
                             });
+                        } else if(preg_match('/#\d+/', $message)) {
+                            return null;
                         } 
                     $event['message'] = $message;
                 }
 
                 return new Log($event, $group, $filters);
-            })->values();
+            })->filter()->values();
 
         return new SearchResult($entries, $response['nextToken'] ?? null);
     }
