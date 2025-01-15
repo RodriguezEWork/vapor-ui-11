@@ -113,12 +113,11 @@ class LogsRepository
                         if(Str::contains($message, '[stacktrace]')) {
                             $track = $key + 1;
                             $listTrack = collect($response['events'])->slice($track);
-                            $listTrack->each(function ($trackEvent) use ($message) {
+                            $listTrack->each(function ($trackEvent) use (&$message) {
                                 if (array_key_exists('message', $trackEvent)) {
                                         $newMessage = $trackEvent['message'];
                                         if(preg_match('/#\d+/', $newMessage)) {
                                             $message = $message . "\n" . $newMessage;
-                                            var_dump($message);
                                         }
                                 }
                             });
