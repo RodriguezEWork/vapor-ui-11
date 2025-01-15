@@ -119,7 +119,7 @@ class LogsRepository
                                         $newMessage = $trackEvent['message'];
                                         if(preg_match('/#\d+/', $newMessage)) {
                                             var_dump('al preg match');
-                                            $message = $message + "\n" + $newMessage;
+                                            $message = $message . "\n" . $newMessage;
                                         } else {
                                             var_dump('al else');
                                             return false;
